@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blog – Stat 386 Blog</title>
+<title>index – Stat 386 Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -147,79 +112,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Tutorial Blog</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
+<section id="project-documentation" class="level1">
+<h1>Project Documentation</h1>
+<p>hi world</p>
 
 
-</header>
-
-
-<section id="data-wrangling-and-visual" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangling-and-visual">Data Wrangling And Visual</h2>
-<section id="introduction" class="level4">
-<h4 class="anchored" data-anchor-id="introduction">Introduction</h4>
-<p>Having usable, clean data is essential part of the data science process. In this tutorial I will teach some basic data wrangling steps and teach how users how to create a few simple visuals for that data. This blog will help students and other users understand the importance of data wrangling as well as introduce them to single data wrangling steps. I will be using data from the Los Angeles Lakers trying to answer the question of if home court advantage really helps teams win.</p>
-</section>
-<section id="body" class="level3">
-<h3 class="anchored" data-anchor-id="body">Body</h3>
-<p>The very first thing that we need to do in answering the question of if home court advantage really helps teams win is to get clean and usable data that will show us trends and help us come up with an answer. The data set that I found contains quite a bit of information, such as points scored, field goals made, and free throw percentage. However, in this tutorial we are not interested in those variables. As part of data wrangling we can make the data a whole lot cleaner simply by eliminating the variables that we are not interested in. When reading in data using the “pd.read_csv()” function we can use the built-in feature of “usecols =” to select the columns from the dataset that we are interested in. Here you can see that I selected to use the columns “MATCH UP”, “GAME DATE”, and “W/L”</p>
-<div id="2baa23ea" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd, json</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">"MATCH&nbsp;UP"</span>, <span class="st">"GAME&nbsp;DATE"</span>, <span class="st">"W/L"</span>]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"Lakers2009-2021.csv"</span>, usecols <span class="op">=</span> cols)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      MATCH&nbsp;UP   GAME&nbsp;DATE W/L
-0    LAL @ NOP  05/16/2021   W
-1    LAL @ IND  05/15/2021   W
-2  LAL vs. HOU  05/12/2021   W
-3  LAL vs. NYK  05/11/2021   W
-4  LAL vs. PHX  05/09/2021   W</code></pre>
-</div>
-</div>
-<div id="f7b9c760" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data.rename(columns <span class="op">=</span> {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MATCH</span><span class="ch">\xa0</span><span class="st">UP'</span> : <span class="st">'Match_Up'</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GAME</span><span class="ch">\xa0</span><span class="st">DATE'</span> : <span class="st">'Game_Date'</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home_away(x):</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x.strip().lower()</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"vs."</span> <span class="kw">in</span> x:</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Home"</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"@"</span> <span class="kw">in</span> x: </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Away"</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Home/Away"</span>] <span class="op">=</span> data[<span class="st">"Match_Up"</span>].<span class="bu">apply</span>(home_away)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Match_Up   Game_Date W/L Home/Away
-0    LAL @ NOP  05/16/2021   W      Away
-1    LAL @ IND  05/15/2021   W      Away
-2  LAL vs. HOU  05/12/2021   W      Home
-3  LAL vs. NYK  05/11/2021   W      Home
-4  LAL vs. PHX  05/09/2021   W      Home</code></pre>
-</div>
-</div>
-
-
-</section>
 </section>
 
 </main> <!-- /main -->
