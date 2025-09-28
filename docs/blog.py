@@ -1,3 +1,6 @@
+#| echo: true
+#| eval: true
+
 import pandas as pd, json
 import matplotlib.pyplot as plt
 

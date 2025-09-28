@@ -7,6 +7,8 @@ Having usable, clean data is essential part of the data science process. In this
 ### Body
 The very first thing that we need to do in answering the question of if home court advantage really helps teams win is to get clean and usable data that will show us trends and help us come up with an answer. The data set that I found contains quite a bit of information, such as points scored, field goals made, and free throw percentage. However, in this tutorial we are not interested in those variables. As part of data wrangling we can make the data a whole lot cleaner simply by eliminating the variables that we are not interested in. When reading in data using the "pd.read_csv()" function we can use the built-in feature of "usecols =" to select the columns from the dataset that we are interested in. Here you can see that I selected to use the columns "MATCH UP", "GAME DATE", and "W/L"
 ```{python}
+#| echo: true
+#| eval: true
 import pandas as pd, json
 
 cols = ["MATCH UP", "GAME DATE", "W/L"]
@@ -17,6 +19,8 @@ print(data.head())
 
 
 ```{python}
+#| echo: true
+#| eval: true
 data.rename(columns = {
     'MATCH\xa0UP' : 'Match_Up',
     'GAME\xa0DATE' : 'Game_Date'
