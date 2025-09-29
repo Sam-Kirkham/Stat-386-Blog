@@ -19,7 +19,7 @@ website:
         menu:
           - text: "All Projects"
             href: projects/index.md
-          - text: "---"
+          - text: "---" 
           - text: "Exploratory Data Analysis"
             href: projects/eda.qmd
           - text: "Data Acquisition"
